@@ -1,81 +1,131 @@
-# AURA — Minimal Desktop Widget Overlay
+# Aura — Mental Wellness & Journaling App
 
-AURA is a sleek, lightweight desktop overlay that lets you place widgets like clock, weather, shortcuts, and quotes directly on your desktop — without opening an app or cluttering your workspace.
+Aura is a mental health companion designed to help teens and young adults track emotions, journal daily moods, and build better habits. Unlike ordinary habit or journaling apps, Aura focuses on small emotional progress — one day at a time.
 
-## ✨ Features
+---
 
-* **Widgets on the desktop** — clock, weather, quotes, shortcuts
-* **Draggable & resizable** — place widgets anywhere on your desktop
-* **Minimal & aesthetic UI** — transparency, blur, custom themes
-* **Lightweight** — runs silently in background
-* **Live updates** — auto-refreshes weather, time, and quotes
+## 🌟 Features
 
-## 🧠 Why AURA?
+* ✅ Authentication (Register, Login) — secure & email verified
+* ✅ Daily mood tracking
+* ✅ Guided journaling prompts
+* ✅ Custom toast notifications using **Sonner + Framer Motion** animations
+* ✅ Fully responsive UI designed with Tailwind CSS
+* ✅ Secure backend with Node.js, Express & MongoDB
+* ✅ Email provider using Nodemailer (Welcome + Verification emails)
 
-Instead of opening multiple apps just to check simple things, AURA keeps the essentials right in front of you — quietly, aesthetically.
+---
 
-> Focus more. Click less.
+## 🧠 Tech Stack
 
-## 🚀 Tech Stack
+**Frontend:**
 
-| Component            | Technology          |
-| -------------------- | ------------------- |
-| Frontend             | React + TailwindCSS |
-| State Management     | Redux Toolkit       |
-| Desktop Packaging    | Electron            |
-| Optional API Backend | Node.js / Express   |
+* React + Redux Toolkit
+* React Router
+* Tailwind CSS / Framer Motion
+* Sonner (Custom Toast UI)
 
-## 📸 Screenshots
+**Backend:**
 
-> *(Add your screenshots / GIF demos here once ready)*
+* Node.js + Express.js
+* MongoDB + Mongoose
+* Nodemailer (Email service)
 
-## 🛠️ Getting Started (Development)
+**Others:**
+
+* JWT Authentication
+* Environment variables via .env
+
+---
+
+## 🛠️ Installation
+
+Clone the repo:
 
 ```bash
-# Clone the repo
-git clone https://github.com/your-username/aura.git
-
-# Change directory
+git clone https://github.com/yourusername/aura.git
 cd aura
-
-# Install dependencies
-npm install
-
-# Run the app	npm run dev
 ```
 
-### Packaging with Electron (optional)
+Install dependencies for frontend and backend:
 
 ```bash
-npm run electron:dev
+# Frontend
+yarn install   # or npm install
+
+# Backend
+cd server
+yarn install   # or npm install
 ```
 
-## 🧩 Project Structure
+---
+
+## 🚀 Run Aura Locally
+
+```bash
+# Backend
+yarn dev
+
+# Frontend
+cd client
+yarn dev
+```
+
+Frontend runs on: `http://localhost:5173`
+Backend runs on: `http://localhost:5000`
+
+---
+
+## 🔐 Environment Variables (.env)
+
+Create a `.env` file in **server** directory:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret_key
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_gmail_app_password
+EMAIL_FROM="Aura <your_email@gmail.com>"
+```
+
+---
+
+## 📧 Email Notifications
+
+Aura supports:
+
+* ✉️ Welcome Emails
+* ✅ Email Verification
+
+All templates are generated dynamically using Nodemailer + custom HTML.
+
+---
+
+## 📂 Folder Structure
 
 ```
 aura/
- ├── src/
- │   ├── components/
- │   ├── widgets/
- │   ├── redux/
- │   ├── pages/
- │   └── App.jsx
- ├── public/
- ├── package.json
- └── README.md
+ ├── client/      # React Frontend
+ └── server/      # Express Backend
 ```
 
-## 🛣️ Roadmap
+---
 
-* [ ] Drag & drop widget positioning
-* [ ] Import/export themes
-* [ ] AI-powered daily quotes & mood tracking
-* [ ] Custom widget marketplace (future)
+## 🧪 Coming Soon
+
+* AI Emotion Insight (Generate emotional reports)
+* Streak rewards
+* Dark mode
+
+---
 
 ## 🤝 Contributing
 
-Pull requests are welcome. For major changes, open an issue first to discuss what you’d like to modify.
+Pull requests are welcome. For major changes, open an issue first.
+
+---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+MIT © 2025 Aura
