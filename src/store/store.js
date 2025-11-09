@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { authReducer } from "./reducers/auth";
+import { waitlistReducer } from "./reducers/waitlistReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  waitlist: waitlistReducer,
 });
 
 const store = configureStore({

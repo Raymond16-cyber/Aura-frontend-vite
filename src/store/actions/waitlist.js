@@ -1,0 +1,33 @@
+import axios from "axios";
+import { WAITLIST_JOIN_FAIL, WAITLIST_JOIN_SUCCESS } from "../types/type";
+
+const baseURL = "http://localhost:4000";
+
+export const joinWaitlistAction =
+  (fullName, email, referralCode) => async (dispatch) => {
+    try {
+      const res = await axios.post(`${baseURL}/waitlist/join`, {
+        email,
+        name: fullName,
+        referralCode: referralCode || null,
+      });
+
+      dispatch({
+        type: WAITLIST_JOIN_SUCCESS,
+        payload: {
+          message: res.data.message,
+          referralCode: res.data.referralCode,
+          waitlistPosition: res.data.waitlistPosition,
+        },
+      });
+    } catch (error) {
+      const errMsg = error.response?.data?.message || "Something went wrong.";
+      console.error("Join waitlist error:", errMsg);
+      dispatch({
+        type: WAITLIST_JOIN_FAIL,
+        payload: {
+          error: errMsg,
+        },
+      });
+    }
+  };

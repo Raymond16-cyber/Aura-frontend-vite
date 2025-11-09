@@ -1,0 +1,162 @@
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { joinWaitlistAction } from "../../store/actions/waitlist";
+import { clearErrors, clearSuccessMessage } from "../../store/actions/auth";
+
+const JoinWaitlist = () => {
+  const dispatch = useDispatch();
+  const { successMessage, error, referralCode, waitlistPosition } = useSelector(
+    (state) => state.waitlist
+  );
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [referralCodeInput, setReferralCodeInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleJoin = async () => {
+    if (!fullName.trim()) return toast.error("Name cannot be empty");
+    if (!email.trim()) return toast.error("Email cannot be empty");
+
+    if (referralCodeInput && !/^AURA-\w{6}$/.test(referralCodeInput.trim())) {
+      return toast.error(
+        "Invalid referral code format. It should be like AURA-XXXXXX"
+      );
+    }
+
+    setLoading(true);
+    try {
+      dispatch(
+        joinWaitlistAction(
+          fullName.trim(),
+          email.trim(),
+          referralCodeInput.trim() || null
+        )
+      );
+      //   setFullName("");
+      //   setEmail("");
+      //   setReferralCodeInput("");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (successMessage) {
+      const data = `${successMessage}!\n\nYour referral code: ${referralCode}\nYour position on the waitlist: ${waitlistPosition}\n\nShare your referral code to move up the waitlist faster!`;
+      navigator.clipboard.writeText(data);
+      toast.success(data);
+      return;
+    } else if (error) {
+      toast.error(error);
+    }
+  }, [successMessage, error]);
+
+  useEffect(() => {
+    return () => dispatch(clearSuccessMessage());
+  }, [dispatch, successMessage]);
+
+  useEffect(() => {
+    return () => dispatch(clearErrors());
+  }, [dispatch, error]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-(--aura-bg) p-6">
+      <div className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50">
+        <div className="mx-auto w-16 h-16 rounded-full bg-(--aura-primary)/10 flex items-center justify-center mb-4">
+          <span className="text-(--aura-primary) text-3xl font-bold">Aura</span>
+        </div>
+
+        <h1 className="text-3xl font-bold text-(--aura-primary) text-center">
+          Join Aura Waitlist
+        </h1>
+        <p className="text-center text-gray-600 mt-2">
+          Be one of the first to access Aura. Earn rewards by sharing your
+          referral code.
+        </p>
+
+        {/* FULL NAME */}
+        <div className="mt-8">
+          <label className="block mb-2 text-gray-700 font-medium">
+            Full name
+          </label>
+          <input
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="John David"
+            className="
+              w-full p-4 rounded-xl
+              border border-gray-300 outline-none
+              focus:ring-4 focus:ring-(--aura-primary)/40
+              transition-all duration-200
+            "
+          />
+        </div>
+
+        {/* EMAIL */}
+        <div className="mt-5">
+          <label className="block mb-2 text-gray-700 font-medium">
+            Email address
+          </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="example@mail.com"
+            className="
+              w-full p-4 rounded-xl
+              border border-gray-300 outline-none
+              focus:ring-4 focus:ring-(--aura-primary)/40
+              transition-all duration-200
+            "
+          />
+        </div>
+
+        {/* OPTIONAL REFERRAL */}
+        <div className="mt-4">
+          <label className="block mb-2 text-gray-600">
+            Referral code{" "}
+            <span className="text-sm text-gray-400">(optional)</span>
+          </label>
+          <input
+            type="text"
+            value={referralCodeInput}
+            onChange={(e) => setReferralCodeInput(e.target.value)}
+            placeholder="AURA-XXXXXX (optional)"
+            className="
+              w-full p-3 rounded-xl
+              border border-gray-200 outline-none
+              focus:ring-2 focus:ring-(--aura-primary)/30
+              transition-all duration-200
+            "
+          />
+        </div>
+
+        <button
+          onClick={handleJoin}
+          disabled={loading}
+          className={`
+            w-full mt-6 py-4 rounded-xl font-semibold
+            bg-(--aura-primary)
+            shadow-[0_0_15px_rgba(99,102,241,0.4)]
+            hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
+            transition-all duration-300
+            hover:scale-[1.02]
+            ${loading ? "opacity-60 cursor-not-allowed" : ""}
+          `}
+        >
+          {loading ? "Joining…" : "Join Waitlist 🚀"}
+        </button>
+
+        <p className="text-center mt-6 text-sm text-gray-500">
+          We'll send updates to your email. You can unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default JoinWaitlist;

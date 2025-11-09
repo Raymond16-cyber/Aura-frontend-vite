@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../../components/auth/Common/Header";
-import { RegisterBody } from "../../components/RegisterSections";
+import Header from "../../../components/auth/Common/Header";
+import { RegisterBody } from "../../../components/RegisterSections";
 
 const Register = () => {
   return (

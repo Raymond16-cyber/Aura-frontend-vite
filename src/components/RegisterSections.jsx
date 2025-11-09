@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleLogo from "../assets/googleimg.png";
 import AppleLogo from "../assets/appleimg.png";
 import FacebookLogo from "../assets/facebookimg.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { registerAction } from "../store/actions/auth";
+import { clearErrors, clearSuccessMessage, registerAction } from "../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { LogIn } from "lucide-react";
 
 export const RegisterBody = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const { loading, successMessage, error,url } = useSelector((state) => state.auth);
   // input state
   const [inputState, setInputState] = useState({
     name: "",
@@ -63,6 +64,27 @@ export const RegisterBody = () => {
       setIsRegistering(false);
     }
   };
+
+  // listen for success message & errors
+  useEffect(() => {
+    if (successMessage) {
+      toast.success(successMessage);
+      if(url){
+        navigate(url);
+      }return
+    } else if (error) {
+      toast.error(error);
+    }
+  }, [successMessage, error, navigate]);
+
+  // listen for clear success message on component unmount
+  useEffect(() => {
+    dispatch(clearSuccessMessage());
+  }, [dispatch, successMessage]);
+  // listen for clear errors on component unmount
+  useEffect(() => {
+    dispatch(clearErrors());
+  }, [dispatch, error]);
   return (
     <main className="flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full rounded-3xl px-6 sm:p-8 ">
@@ -129,22 +151,22 @@ export const RegisterBody = () => {
             </p>
           )}
           <button
-              disabled={isRegistering || loading}
-              type="submit"
-              className="w-full bg-green-400 text-white py-4 rounded-3xl font-semibold hover:bg-black transition-colors flex items-center justify-center gap-2  duration-300"
-            >
-              {isRegistering|| loading ? (
-                <div className="flex items-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Signing up...
-                </div>
-              ) : (
-                <div className="flex items-center">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Sign up
-                </div>
-              )}
-            </button>
+            disabled={isRegistering || loading}
+            type="submit"
+            className="w-full bg-green-400 text-white py-4 rounded-3xl font-semibold hover:bg-black transition-colors flex items-center justify-center gap-2  duration-300"
+          >
+            {isRegistering || loading ? (
+              <div className="flex items-center">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                Signing up...
+              </div>
+            ) : (
+              <div className="flex items-center">
+                <LogIn className="h-4 w-4 mr-2" />
+                Sign up
+              </div>
+            )}
+          </button>
 
           <div className="flex items-center justify-center gap-3 text-gray-500">
             <hr className="w-24" />
