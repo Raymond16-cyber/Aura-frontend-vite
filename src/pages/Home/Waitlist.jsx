@@ -4,6 +4,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { joinWaitlistAction } from "../../store/actions/waitlist";
 import { clearErrors, clearSuccessMessage } from "../../store/actions/auth";
+import applogo from "../../assets/applogo.png";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const JoinWaitlist = () => {
   const dispatch = useDispatch();
@@ -63,13 +66,19 @@ const JoinWaitlist = () => {
   }, [dispatch, error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-(--aura-bg) p-6">
-      <div className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50">
-        <div className="mx-auto w-16 h-16 rounded-full bg-(--aura-primary)/10 flex items-center justify-center mb-4">
-          <span className="text-(--aura-primary) text-3xl font-bold">Aura</span>
+    <div className="min-h-screen flex items-center justify-center bg-(--aura-bg) p-4 text-sm">
+      <div className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50 ">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-16 h-16 sm:w-12 sm:h-12 bg-(--aura-primary) flex items-center justify-between rounded-full">
+            <img
+              src={applogo}
+              alt="Aura Logo"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
-        <h1 className="text-3xl font-bold text-(--aura-primary) text-center">
+        <h1 className="text-2xl font-bold text-(--aura-primary) text-center">
           Join Aura Waitlist
         </h1>
         <p className="text-center text-gray-600 mt-2">
@@ -78,7 +87,7 @@ const JoinWaitlist = () => {
         </p>
 
         {/* FULL NAME */}
-        <div className="mt-8">
+        <div className="">
           <label className="block mb-2 text-gray-700 font-medium">
             Full name
           </label>
@@ -154,6 +163,11 @@ const JoinWaitlist = () => {
         <p className="text-center mt-6 text-sm text-gray-500">
           We'll send updates to your email. You can unsubscribe anytime.
         </p>
+       <Link to="/" className="flex items-center justify-center  text-center hover:underline">
+  <ArrowLeft className="text-(--aura-primary) pt-2" />
+  <p className="text-(--aura-primary) pt-2">Go to Dashboard</p>
+</Link>
+
       </div>
     </div>
   );
