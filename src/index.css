@@ -1,5 +1,10 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss";
+/* stylelint-enable at-rule-no-unknown */
+
 
 :root {
   --background: #ffffff;
@@ -7,13 +12,6 @@
 }
  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .animate-fadeIn { animation: fadeIn 0.3s ease; }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -46,4 +44,13 @@ body {
   --aura-primary: #6366f1;
   --aura-accent: #8b5cf6;
   --aura-bg: #f7f8fc;
+}
+
+/* dark mode CSS variable overrides when .dark is present on <html> */
+.dark {
+  --background: #0b1220;
+  --foreground: #e6eef8;
+  --aura-primary: #8b5cf6;
+  --aura-accent: #c4b5fd;
+  --aura-bg: #071026;
 }
