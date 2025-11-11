@@ -100,7 +100,7 @@ const JoinWaitlist = () => {
               w-full p-4 rounded-xl
               border border-gray-300 outline-none
               focus:ring-4 focus:ring-(--aura-primary)/40
-              transition-all duration-200
+              transition-all duration-200 text-black
             "
           />
         </div>
