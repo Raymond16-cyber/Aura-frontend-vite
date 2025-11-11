@@ -72,18 +72,17 @@ const Home = () => {
             </div>
             <p className="text-(--aura-primary) text-4xl font-bold">Aura</p>
           </Link>
-          
 
           {/* menu button */}
           <div className="menBtn bg-(--aura-primary)/20 p-2 rounded-lg hover:bg-(--aura-primary)/40 transition-colors duration-300">
-          <Menu />
-
+            <Menu />
           </div>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="flex flex-col md:flex-row items-center gap-14 max-w-6xl mx-auto px-6 py-32 relative z-10">
+      <section className="flex flex-col md:flex-row items-center gap-14 max-w-6xl mx-auto px-6 py-32 relative z-10"
+      >
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -128,15 +127,195 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Social Proof */}
-      <section className="py-10 bg-white/60 backdrop-blur-xl border-y relative z-10">
-        <p className="text-center text-gray-600 text-sm">
-          Already 2 users joined
-        </p>
-        <div className="flex justify-center gap-4 mt-3">
-          <div className="w-8 h-8 bg-purple-300 rounded-full" />
-          <div className="w-8 h-8 bg-purple-400 rounded-full" />
-          <div className="w-8 h-8 bg-purple-500 rounded-full" />
+      {/* Proof / Social Validation */}
+      <section className="py-12 relative z-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-(--aura-primary)">
+                Loved by people building better days
+              </h2>
+              <p className="mt-3 text-gray-600 max-w-lg">
+                Real users, real progress — Aura helps people form tiny habits
+                that add up. See what members are saying.
+              </p>
+              <div className="mt-6 flex items-center gap-4">
+                <div className="bg-white rounded-full px-4 py-2 shadow-sm">
+                  <p className="text-sm text-gray-500">Avg. rating</p>
+                  <p className="font-semibold text-(--aura-primary)">4.8 / 5</p>
+                </div>
+                <div className="bg-white rounded-full px-4 py-2 shadow-sm">
+                  <p className="text-sm text-gray-500">Active users</p>
+                  <p className="font-semibold text-(--aura-primary)">+300</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4"
+             data-aos="fade-up"
+  data-aos-duration="1000">
+              <div className="p-5 bg-white rounded-2xl shadow-md">
+                <p className="text-sm text-gray-700">
+                  "I finally stuck to a 5-minute wind-down routine. My sleep
+                  improved in two weeks."
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center font-semibold text-(--aura-primary)">
+                    JS
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Janelle S.</p>
+                    <p className="text-xs text-gray-500">
+                      Daily user · 3 months
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-5 bg-white rounded-2xl shadow-md"
+               data-aos="fade-up"
+  data-aos-duration="1000">
+                <p className="text-sm text-gray-700">
+                  "The mood check-ins help me notice patterns. It's gentle and
+                  non-judgmental."
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center font-semibold text-(--aura-primary)">
+                    RM
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Ramon M.</p>
+                    <p className="text-xs text-gray-500">
+                      Weekly user · 6 months
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-5 bg-white rounded-2xl shadow-md"
+               data-aos="fade-up"
+  data-aos-duration="1000">
+                <p className="text-sm text-gray-700">
+                  "Small wins keep me motivated. The streak visuals are
+                  delightful."
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-indigo-200 rounded-full flex items-center justify-center font-semibold text-(--aura-primary)">
+                    AL
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Alicia L.</p>
+                    <p className="text-xs text-gray-500">Daily user · 1 year</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Aura is Different (value bullets) */}
+      <section className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-(--aura-primary)">
+          Why Aura is different
+        </h2>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            className="p-6 bg-white rounded-2xl shadow-md"
+             data-aos="fade-left"
+  data-aos-duration="1000"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-md bg-(--aura-primary)/10 flex items-center justify-center">
+                <Heart size={20} className="text-(--aura-primary)" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-(--aura-primary)">
+                  Micro-habits, big results
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Tiny, consistent actions are easier to keep — Aura focuses on
+                  small wins, streaks, and gentle nudges.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-white rounded-2xl shadow-md"
+           data-aos="fade-left"
+  data-aos-duration="1000">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-md bg-(--aura-primary)/10 flex items-center justify-center">
+                <Smile size={20} className="text-(--aura-primary)" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-(--aura-primary)">
+                  Emotional wellness first
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Quick check-ins and mood tracking help users understand
+                  patterns and respond with compassion, not pressure.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-white rounded-2xl shadow-md"
+           data-aos="fade-left"
+  data-aos-duration="1000">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-md bg-(--aura-primary)/10 flex items-center justify-center">
+                <Rocket size={20} className="text-(--aura-primary)" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-(--aura-primary)">
+                  Simple, human-centered design
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  No jargon, no heavy tracking — just a friendly experience that
+                  helps people feel supported while building habits.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community / Emotional Connection */}
+      <section className="max-w-6xl mx-auto px-6 py-16 relative z-10"
+       data-aos="fade-down"
+  data-aos-duration="1000">
+        <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex-1">
+            <h3 className="text-2xl font-semibold text-(--aura-primary)">
+              You’re not alone
+            </h3>
+            <p className="mt-2 text-gray-600">
+              Join a gentle community focused on progress, not perfection.
+              Support, celebrate, and grow together.
+            </p>
+          </div>
+
+          <div className="flex-1 flex items-center gap-3 justify-end">
+            <div className="flex -space-x-3">
+              <div className="w-10 h-10 rounded-full bg-purple-300 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-pink-300 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-indigo-300 border-2 border-white" />
+              <div className="w-10 h-10 rounded-full bg-yellow-300 border-2 border-white" />
+            </div>
+            <div className="ml-4 text-right">
+              <p className="text-sm text-gray-500">
+                +300 users building habits together
+              </p>
+              <Link
+                to="/waitlist"
+                className="mt-2 inline-block px-4 py-2 bg-(--aura-primary) text-white rounded-xl font-semibold"
+              >
+                Join Community
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -156,7 +335,9 @@ const Home = () => {
               className="p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all flex flex-col items-start gap-4"
             >
               {f.icon}
-              <h3 className="text-xl font-semibold text-(--aura-primary)">{f.title}</h3>
+              <h3 className="text-xl font-semibold text-(--aura-primary)">
+                {f.title}
+              </h3>
               <p className="mt-2 text-gray-600">{f.desc}</p>
             </motion.div>
           ))}
