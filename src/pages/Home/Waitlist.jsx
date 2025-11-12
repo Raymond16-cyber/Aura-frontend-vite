@@ -25,7 +25,6 @@ const JoinWaitlist = () => {
   useEffect(() => {
     if (refCode) {
       console.log("Referral code from URL:", refCode);
-      console.log(referralCodeInput, refCode);
       setUrlReferralCode(refCode);
     }
   }, [refCode]);
