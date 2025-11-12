@@ -9,15 +9,14 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 const JoinWaitlist = () => {
-  console.log("Location object:", useLocation());
   const dispatch = useDispatch();
   const { successMessage, error, referralCode, waitlistPosition } = useSelector(
     (state) => state.waitlist
   );
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [referralCodeInput, setReferralCodeInput] = useState("");
-  const [urlReferralCode, setUrlReferralCode] = useState("");
+  const [referralCodeInput, setReferralCodeInput] = useState(null);
+  const [urlReferralCode, setUrlReferralCode] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // in case there's a referral code, extract from URL
@@ -26,6 +25,7 @@ const JoinWaitlist = () => {
   useEffect(() => {
     if (refCode) {
       console.log("Referral code from URL:", refCode);
+      console.log(referralCodeInput, refCode);
       setUrlReferralCode(refCode);
     }
   }, [refCode]);
@@ -43,12 +43,14 @@ const JoinWaitlist = () => {
     setLoading(true);
     try {
       dispatch(
-        joinWaitlistAction(
-          fullName.trim(),
-          email.trim(),
-          referralCodeInput.trim() || null
-        )
+        joinWaitlistAction({
+          fullName: fullName.trim(),
+          email: email.trim(),
+          referralCode:
+            referralCodeInput?.trim() || urlReferralCode?.trim() || null,
+        })
       );
+
       //   setFullName("");
       //   setEmail("");
       //   setReferralCodeInput("");

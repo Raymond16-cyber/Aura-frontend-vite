@@ -4,7 +4,7 @@ import { WAITLIST_JOIN_FAIL, WAITLIST_JOIN_SUCCESS } from "../types/type";
 const baseURL = "http://localhost:4000";
 
 export const joinWaitlistAction =
-  (fullName, email, referralCode) => async (dispatch) => {
+  ({fullName, email, referralCode}) => async (dispatch) => {
     try {
       const res = await axios.post(`${baseURL}/waitlist/join`, {
         email,
