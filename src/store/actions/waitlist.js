@@ -22,7 +22,7 @@ export const joinWaitlistAction =
         },
       });
     } catch (error) {
-      const errMsg = error.response?.data?.message || "Something went wrong.";
+      const errMsg = error.response?.data?.error || "Something went wrong.";
       console.error("Join waitlist error:", errMsg);
       dispatch({
         type: WAITLIST_JOIN_FAIL,

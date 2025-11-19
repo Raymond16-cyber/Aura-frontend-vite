@@ -20,13 +20,13 @@ export const waitlistReducer = (state = waitlistState, action) => {
       return {
         ...state,
         successMessage: "",
-        success: false,
+        
       };
     case CLEAR_ERRORS:
       return {
         ...state,
         error: "",
-        success: false,
+       
       };
     case WAITLIST_JOIN_SUCCESS:
       return {

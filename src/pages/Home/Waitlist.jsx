@@ -93,7 +93,7 @@ const JoinWaitlist = () => {
           </p>
           <Link
             to="/"
-            className="inline-flex items-center px-6 py-3 bg-(--aura-primary) dark:bg-(--aura-primary-dark) text-white rounded-xl hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-(--aura-primary) dark:bg-white bg-black text-white rounded-xl hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] dark:text-black hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all duration-300"
           >
             <ArrowLeft className="mr-2" />
             Go to Dashboard
