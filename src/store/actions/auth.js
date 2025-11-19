@@ -14,7 +14,7 @@ import {
   VERIFY_EMAIL_SUCCESS,
 } from "../types/type";
 
-const baseURL = "http://localhost:4000";
+const baseURL = "https://aura-backend-1-53kt.onrender.com";
 
 // clear success message
 export const clearSuccessMessage = () => (dispatch) => {
