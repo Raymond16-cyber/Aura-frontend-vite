@@ -14,7 +14,7 @@ import {
   VERIFY_EMAIL_SUCCESS,
 } from "../types/type";
 
-const baseURL = "https://aura-backend-1-53kt.onrender.com";
+const baseURL = "https://aura-backend-b781be7b7d74.herokuapp.com";
 
 // clear success message
 export const clearSuccessMessage = () => (dispatch) => {

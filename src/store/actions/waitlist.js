@@ -1,7 +1,7 @@
 import axios from "axios";
 import { WAITLIST_JOIN_FAIL, WAITLIST_JOIN_SUCCESS } from "../types/type";
 
-const baseURL = "https://aura-backend-1-53kt.onrender.com";
+const baseURL = "https://aura-backend-b781be7b7d74.herokuapp.com";
 
 export const joinWaitlistAction =
   ({fullName, email, referralCode}) => async (dispatch) => {
