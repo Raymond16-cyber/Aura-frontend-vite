@@ -10,6 +10,7 @@ const waitlistState = {
   error: null,
   referralCode: null,
   waitlistPosition: null,
+  success:false
 };
 
 export const waitlistReducer = (state = waitlistState, action) => {
@@ -19,16 +20,19 @@ export const waitlistReducer = (state = waitlistState, action) => {
       return {
         ...state,
         successMessage: "",
+        success: false,
       };
     case CLEAR_ERRORS:
       return {
         ...state,
         error: "",
+        success: false,
       };
     case WAITLIST_JOIN_SUCCESS:
       return {
         ...state,
         successMessage: payload.message,
+        success: payload.success,
         referralCode: payload.referralCode,
         waitlistPosition: payload.waitlistPosition,
       };

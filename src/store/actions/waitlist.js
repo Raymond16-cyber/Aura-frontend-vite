@@ -16,6 +16,7 @@ export const joinWaitlistAction =
         type: WAITLIST_JOIN_SUCCESS,
         payload: {
           message: res.data.message,
+          success: res.data.success,
           referralCode: res.data.referralCode,
           waitlistPosition: res.data.waitlistPosition,
         },
