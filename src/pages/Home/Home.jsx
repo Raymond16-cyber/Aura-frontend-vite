@@ -6,7 +6,7 @@ import logo from "../../assets/applogo.png";
 import leaderboardLogo from "../../assets/leaderboardpic.png";
 import womanSmiling from "../../assets/womanSmiling.png";
 import { Heart, Menu, Rocket, Smile, Sun, Moon } from "lucide-react";
-import SideBar from "./SideBar";
+import useTheme from "../../hooks/useTheme";
 
 const featureList = [
   {
@@ -45,31 +45,10 @@ const Home = () => {
   }, []);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const [dark, setDark] = useState(() => {
-    try {
-      const stored = localStorage.getItem("theme");
-      if (stored) return stored === "dark";
-      return (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    } catch (e) {
-      return false;
-    }
-  });
-
-  useEffect(() => {
-    try {
-      if (dark) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", dark ? "dark" : "light");
-    } catch (e) {
-      // ignore
-    }
-  }, [dark]);
+  const { theme: dark, toggleTheme: setDark } = useTheme();
 
   return (
-    <div className="relative min-h-screen font-inter overflow-x-hidden  from-purple-50 via-white to-purple-50">
+    <div className="relative min-h-screen font-inter   from-purple-50 via-white to-purple-50">
       {/* Floating blobs */}
       <FloatingBlob
         className="w-48 h-48 bg-purple-300"
@@ -85,7 +64,7 @@ const Home = () => {
       />
 
       {/* Navbar */}
-      <header className="w-full py-6 sticky top-0 z-30 bg-white/30 backdrop-blur-lg border-b border-white/20">
+      <header className="w-full py-6 sticky top-0 z-50 bg-white/30 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <div className="w-16 h-16 sm:w-12 sm:h-12 bg-[var(--aura-primary)] flex items-center justify-center rounded-full">
@@ -431,13 +410,16 @@ const Home = () => {
 
       {/* CTA */}
       <section className="text-center py-24 bg-[var(--aura-primary)] text-white relative z-10">
-        <motion.h2
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="text-4xl font-bold"
-        >
-          Start small. Stay consistent.
-        </motion.h2>
+        <div className="inline-block overflow-hidden">
+          <motion.h2
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="text-4xl font-bold"
+          >
+            Start small. Stay consistent.
+          </motion.h2>
+        </div>
+
         <p className="mt-4 opacity-90">
           It's your journey — Aura just supports it.
         </p>
