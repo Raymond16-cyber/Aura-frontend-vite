@@ -85,7 +85,7 @@ const Home = () => {
       />
 
       {/* Navbar */}
-      <header className="w-full py-6 sticky top-0 bg-white/30 backdrop-blur-lg z-30 border-b border-white/20">
+      <header className="w-full py-6 sticky top-0 z-30 bg-white/30 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <div className="w-16 h-16 sm:w-12 sm:h-12 bg-[var(--aura-primary)] flex items-center justify-center rounded-full">
@@ -103,13 +103,35 @@ const Home = () => {
             onClick={() => setDark((d) => !d)}
             aria-pressed={dark}
             aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-            className="mr-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+            className="mr-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 sm:hidden"
           >
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-         
+          <nav className="hidden sm:flex items-center gap-6">
+            <Link
+              to="/waitlist"
+              className="px-4 py-2 rounded-xl bg-[var(--aura-primary)] text-white font-semibold shadow-xl hover:scale-105 transition-all"
+            >
+              Join Waitlist 🚀
+            </Link>
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-xl bg-white text-[var(--aura-primary)] font-semibold shadow-lg hover:scale-105 transition-all"
+            >
+              Sign In
+            </Link>
+            <button
+              onClick={() => setDark((d) => !d)}
+              aria-pressed={dark}
+              aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+            >
+              {dark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </nav>
         </div>
       </header>
+      <hr className=" mt-4" />
 
       {/* Hero */}
       <section className="flex flex-col md:flex-row items-center gap-14 max-w-6xl mx-auto px-6 py-32 relative z-10">

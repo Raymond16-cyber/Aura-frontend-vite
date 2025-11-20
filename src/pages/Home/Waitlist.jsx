@@ -78,10 +78,10 @@ const JoinWaitlist = () => {
   }, [dispatch, error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-(--aura-bg) dark:bg-gray-900 p-4 text-sm">
+    <div className="min-h-screen flex items-center justify-center bg-(--aura-bg) dark:bg-gray-900 p-4 sm:p-6 text-sm">
       {success ? (
-        <div className="w-full max-w-lg p-10 rounded-3xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50 dark:border-gray-700 text-center">
-          <h1 className="text-2xl font-bold text-(--aura-primary) dark:text-(--aura-primary-dark) mb-4">
+        <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-6 sm:p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50 dark:border-gray-700 text-center">
+          <h1 className="text-xl sm:text-2xl font-bold text-(--aura-primary) dark:text-(--aura-primary-dark) mb-4">
             Thank you for joining the Aura Waitlist!
           </h1>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
@@ -93,16 +93,16 @@ const JoinWaitlist = () => {
           </p>
           <Link
             to="/"
-            className="inline-flex items-center px-6 py-3 bg-(--aura-primary) dark:bg-white bg-black text-white rounded-xl hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] dark:text-black hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all duration-300"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-(--aura-primary) dark:bg-white bg-black text-white rounded-xl hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] dark:text-black hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all duration-300"
           >
             <ArrowLeft className="mr-2" />
             Go to Dashboard
           </Link>
         </div>
       ) : (
-        <div className="w-full max-w-lg p-10 rounded-3xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50 dark:border-gray-700">
+        <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-6 sm:p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-white/50 dark:border-gray-700">
           <div className="flex items-center justify-center gap-3">
-            <div className="w-16 h-16 sm:w-12 sm:h-12 bg-(--aura-primary) dark:bg-(--aura-primary-dark) flex items-center justify-between rounded-full">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-(--aura-primary) dark:bg-(--aura-primary-dark) flex items-center justify-between rounded-full">
               <img
                 src={applogo}
                 alt="Aura Logo"
@@ -111,7 +111,7 @@ const JoinWaitlist = () => {
             </div>
           </div>
 
-          <h1 className="text-2xl font-bold text-(--aura-primary) dark:text-(--aura-primary-dark) text-center">
+          <h1 className="text-xl sm:text-2xl font-bold text-(--aura-primary) dark:text-(--aura-primary-dark) text-center">
             Join Aura Waitlist
           </h1>
           <p className="text-center text-gray-600 dark:text-gray-300 mt-2">
@@ -129,12 +129,7 @@ const JoinWaitlist = () => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="John David"
-              className="
-          w-full p-4 rounded-xl
-          border border-gray-300 dark:border-gray-600 outline-none
-          focus:ring-4 focus:ring-(--aura-primary)/40
-          transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700
-        "
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 dark:border-gray-600 outline-none focus:ring-4 focus:ring-(--aura-primary)/40 transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700"
             />
           </div>
 
@@ -148,12 +143,7 @@ const JoinWaitlist = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@mail.com"
-              className="
-          w-full p-4 rounded-xl
-          border border-gray-300 dark:border-gray-600 outline-none
-          focus:ring-4 focus:ring-(--aura-primary)/40
-          transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700
-        "
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 dark:border-gray-600 outline-none focus:ring-4 focus:ring-(--aura-primary)/40 transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700"
             />
           </div>
 
@@ -171,27 +161,16 @@ const JoinWaitlist = () => {
               onChange={(e) => setReferralCodeInput(e.target.value)}
               readOnly={!!urlReferralCode}
               placeholder="AURA-XXXXXX (optional)"
-              className="
-          w-full p-3 rounded-xl
-          border border-gray-200 dark:border-gray-600 outline-none
-          focus:ring-2 focus:ring-(--aura-primary)/30
-          transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700
-        "
+              className="w-full p-3 sm:p-3 rounded-xl border border-gray-200 dark:border-gray-600 outline-none focus:ring-2 focus:ring-(--aura-primary)/30 transition-all duration-200 text-black dark:text-white bg-white dark:bg-gray-700"
             />
           </div>
 
           <button
             onClick={handleJoin}
             disabled={loading}
-            className={`
-        w-full mt-6 py-4 rounded-xl font-semibold
-        bg-(--aura-primary) dark:bg-(--aura-primary-dark)
-        shadow-[0_0_15px_rgba(99,102,241,0.4)]
-        hover:shadow-[0_0_30px_rgba(99,102,241,0.6)]
-        transition-all duration-300
-        hover:scale-[1.02]
-        ${loading ? "opacity-60 cursor-not-allowed" : ""}
-      `}
+            className={`w-full mt-6 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base bg-(--aura-primary) dark:bg-(--aura-primary-dark) shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all duration-300 hover:scale-[1.02] ${
+              loading ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           >
             {loading ? "Joining……" : "Join Waitlist 🚀"}
           </button>
@@ -202,10 +181,10 @@ const JoinWaitlist = () => {
 
           <Link
             to="/"
-            className="flex items-center justify-center text-center hover:underline"
+            className="flex items-center justify-center text-center hover:underline gap-2"
           >
             <ArrowLeft className="text-(--aura-primary) dark:text-(--aura-primary-dark) pt-2" />
-            <p className="text-(--aura-primary) dark:text-(--aura-primary-dark) pt-2">
+            <p className="text-(--aura-primary) dark:text-(--aura-primary-dark) pt-2 text-sm sm:text-base">
               Go to Dashboard
             </p>
           </Link>
